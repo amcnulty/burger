@@ -1,0 +1,40 @@
+<header>
+    <img id="burgerImg" src="" alt="burger image">
+    <h1>Eat-Da-Burger!</h1>
+</header>
+<div id="burgerDisplay">
+    {{#each burgers}}
+    <div id="uneaten">
+        <ul id="uneatenList">
+            {{#unless devoured}}
+            <li class="uneatenBurger">
+                <div class="UEBlabel">
+                    {{id}}. {{burger_name}}
+                </div>
+                <div class="devourButton" data-id="{{id}}">
+                    Devour It!
+                </div>
+            </li>
+            {{/unless}}
+        </ul>
+    </div>
+    <div id="eaten">
+        <ul id="eatenList">
+            {{#if devoured}}
+            <li class="eatenBurger">
+                <div class="EBlabel">
+                    {{id}}. {{burger_name}}
+                </div>
+            </li>
+            {{/if}}
+        </ul>
+    </div>
+    {{/each}}
+</div>
+<form id="newBurgerForm">
+    <label for="burgerName">Enter A Burger You Want To Eat.</label>
+    <br>
+    <input id="burgerName" type="text" placeholder="Burger Name...">
+    <br>
+    <input id="submitButton" type="submit" value="Submit">
+</form>

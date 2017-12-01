@@ -1,0 +1,36 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "A burger logger with MySQL, Node, Express, Handlebars and a homemade ORM following MVC design pattern.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amcnulty/burger.git"
+  },
+  "keywords": [
+    "MySQL",
+    "Node",
+    "Express",
+    "Handlebars",
+    "ORM",
+    "MVC"
+  ],
+  "author": "Aaron Michael McNulty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amcnulty/burger/issues"
+  },
+  "homepage": "https://github.com/amcnulty/burger#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "express-handlebars": "^3.0.0",
+    "method-override": "^2.3.10",
+    "mysql": "^2.15.0"
+  }
+}
