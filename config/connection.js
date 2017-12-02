@@ -22,4 +22,10 @@ connection.connect();
 
 connection.query('SET @@auto_increment_increment=1;');
 
+connection.query('INSERT INTO burgers(burger_name)VALUES("Crabby Patty");');
+
+connection.query('INSERT INTO burgers(burger_name)VALUES("Krusty Burger");');
+
+connection.query('INSERT INTO burgers(burger_name)VALUES("Honker Burger");');
+
 module.exports = connection;
