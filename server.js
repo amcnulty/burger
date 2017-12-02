@@ -3,8 +3,6 @@ const express = require('express');
 const methodOverride = require('method-override');
 const bodyParser = require('body-parser');
 
-var port = process.env.PORT || 3000;
-
 var app = express();
 
 // Serve static content for the app from the "public" directory in the application directory.
@@ -23,4 +21,8 @@ var routes = require("./controllers/burgers_controller.js");
 
 app.use("/", routes);
 
-app.listen(port);
+app.set('port', (process.env.PORT || 5000));
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
