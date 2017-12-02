@@ -20,4 +20,9 @@ else {
 
 connection.connect();
 
+connection.query("SET @@auto_increment_increment=1;", function(err, results) {
+    if (err) throw err;
+    console.log(results);
+});
+
 module.exports = connection;
