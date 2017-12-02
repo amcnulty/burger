@@ -20,4 +20,6 @@ else {
 
 connection.connect();
 
+connection.query('SET @@auto_increment_increment=1;');
+
 module.exports = connection;
