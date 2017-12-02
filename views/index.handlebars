@@ -1,25 +1,27 @@
 <header>
-    <img id="burgerImg" src="" alt="burger image">
+    <img id="burgerImg" src="img/krusty-burger.jpg" alt="burger image">
     <h1>Eat-Da-Burger!</h1>
 </header>
 <div id="burgerDisplay">
-    {{#each burgers}}
     <div id="uneaten">
         <ul id="uneatenList">
+            {{#each burgers}}
             {{#unless devoured}}
             <li class="uneatenBurger">
                 <div class="UEBlabel">
                     {{id}}. {{burger_name}}
                 </div>
                 <div class="devourButton" data-id="{{id}}">
-                    Devour It!
+                    Devour it!
                 </div>
             </li>
             {{/unless}}
+            {{/each}}
         </ul>
     </div>
     <div id="eaten">
         <ul id="eatenList">
+            {{#each burgers}}
             {{#if devoured}}
             <li class="eatenBurger">
                 <div class="EBlabel">
@@ -27,12 +29,12 @@
                 </div>
             </li>
             {{/if}}
+            {{/each}}
         </ul>
     </div>
-    {{/each}}
 </div>
 <form id="newBurgerForm">
-    <label for="burgerName">Enter A Burger You Want To Eat.</label>
+    <label id="formLabel" for="burgerName">Enter A Burger You Want To Eat.</label>
     <br>
     <input id="burgerName" type="text" placeholder="Burger Name...">
     <br>
