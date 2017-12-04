@@ -1,28 +1,42 @@
 const mysql = require('mysql');
 
-if (process.env.NODE_ENV === 'development') {
-    var connection = mysql.createConnection({
-        host: process.env.DB_HOST,
-        port: process.env.DB_PORT,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: "burgers_db"
-    });
-}
-else {
-    var connection = mysql.createConnection({
-        host: process.env.DB_HOST,
-        user: process.env.DB_USER,
-        password: process.env.DB_PASS,
-        database: process.env.DB_NAME
-    });
-}
+const configVars = {
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
+};
+
+var connection = mysql.createConnection(configVars);
 
 connection.connect();
 
-// connection.query("SET @@auto_increment_increment=1;", function(err, results) {
-//     if (err) throw err;
-//     console.log(results);
-// });
+setInterval(function() {
+    connection.ping();
+}, 3000);
+
+function handleDisconnect(myConnection) {
+    myConnection.on('error', function(err) {
+        console.log(err);
+        connection.destroy();
+        setTimeout(function() {
+            connection = mysql.createConnection(configVars);
+            handleDisconnect(connection);
+            connection.connect();
+            setIncrement();
+        }, 1000);
+    })
+}
+
+function setIncrement() {
+    connection.query("SET @@auto_increment_increment=1;", function(err, results) {
+        if (err) throw err;
+        console.log(results);
+    });
+}
+
+handleDisconnect(connection);
+
+setIncrement();
 
 module.exports = connection;
